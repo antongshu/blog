@@ -1,0 +1,26 @@
+# blog page sections
+- name: 博客
+  href: /blog/
+
+# edit following lines to custom your blog page, make sure name is the same as href but capitalized first letter(except HTML)
+- name: java
+  href: /java/
+
+- name: Boot
+  href: /boot/
+
+- name: Linux
+  href: /linux/
+
+- name: Database
+  href: /database/
+
+- name: 影评
+  href: /movie/
+
+- name: 文艺
+  href: /literature/
+
+- name: 随记
+  href: /life/
+

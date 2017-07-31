@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+
+	
+	    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <meta content="Win7上安装Linux双系统" name="description">
+  
+  
+    <meta name="keywords" content="linux,双系统">
+  
+  <meta name="author" content="an">
+
+  <title>
+    
+        an|Win7上安装Linux双系统
+    
+  </title>
+  <!-- favicon -->
+  <link rel="shortcut icon" href="/static/assets/img/favicon.ico">
+
+  <!-- Main CSS -->
+  <link href="/static/assets/app-20170307.min.css" rel="stylesheet">
+
+  <!-- Main Scripts -->
+  <script src="/static/assets/app-20170307.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var initial = 0;
+      var show = true;
+
+      var toggleSearch = function (visible) {
+        initial = 0;
+        show = !visible;
+        var visibility = visible ? 'block' : 'none';
+
+        $("#search-content").val("");
+        $(".search-tool").css("display", visibility);
+      };
+
+      var shouldToggle = function (time) {
+        var gap = time - initial;
+        initial = time;
+        return gap < 500;
+      };
+
+      $(document).keyup(function (e) {
+        var now = new Date().getTime();
+        if (e.keyCode == 17 && shouldToggle(now)) {
+          toggleSearch(show);
+        } else if (e.keyCode == 27) {
+          toggleSearch(false);
+        }
+      });
+
+      $("#search-content").keyup(function (e) {
+        var now = new Date().getTime();
+        if (e.keyCode == 17 && shouldToggle(now)) {
+          toggleSearch(show);
+        }
+      });
+
+      $("#close-btn").click(function () {
+        toggleSearch(false);
+      });
+
+      $("#search-btn").click(function() {
+        toggleSearch(true);
+      });
+
+      $.getJSON("/search/cb-search.json")
+        .done(function (data) {
+          if (data.code == 0) {
+            $("#search-content").typeahead({
+              source: data.data,
+              displayText: function (item) {
+                return item.title;
+              },
+              afterSelect: function (item) {
+                window.location.href = item.url;
+              }
+            });
+          }
+        });
+    });
+    $(function(){
+        $("pre").css('display','block');
+    });
+  </script>
+</head>
+
+	
+
+<body id="page-top" class="landing-page">
+
+	
+	    <div class="search-tool"
+      style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px; opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+    <input type="text" class="form-control search-content" id="search-content" style="position: fixed; top: 60px" placeholder="Search Blog">
+
+    <div style="position: fixed; top: 16px; right: 16px; z-index: 9999;">
+        <img src="/search/img/cb-close.png" id="close-btn"/>
+    </div>
+</div>
+
+<div style="position: fixed; right: 16px; bottom: 20px; z-index: 9999;">
+    <img src="/search/img/cb-search.png"  id="search-btn"  title="Double click Ctrl"/>
+</div>
+
+<div class="navbar-wrapper">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">an</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                        
+                        
+                        <li>
+                        
+                        <a class="tagname" href="/blog/">博客</a></li>
+                        
+                    
+                        
+                        
+                        <li>
+                        
+                        <a class="tagname" href="/java/">java</a></li>
+                        
+                    
+                        
+                        
+                        <li>
+                        
+                        <a class="tagname" href="/boot/">Boot</a></li>
+                        
+                    
+                        
+                        
+                        <li>
+                        
+                        <a class="tagname" href="/linux/">Linux</a></li>
+                        
+                    
+                        
+                        
+                        <li>
+                        
+                        <a class="tagname" href="/database/">Database</a></li>
+                        
+                    
+                        
+                        
+                        <li>
+                        
+                        <a class="tagname" href="/movie/">影评</a></li>
+                        
+                    
+                        
+                        
+                        <li>
+                        
+                        <a class="tagname" href="/literature/">文艺</a></li>
+                        
+                    
+                        
+                        
+                        <li>
+                        
+                        <a class="tagname" href="/life/">随记</a></li>
+                        
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+        <li data-target="#inSlider" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="container">
+                <div class="carousel-caption">
+                </div>
+                <div class="carousel-image wow zoomIn">
+                    <!-- <img src="static/img/landing/laptop.png" alt="laptop"/> -->
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back one"></div>
+
+        </div>
+        <div class="item">
+            <div class="container">
+                <div class="carousel-caption blank">
+                </div>
+            </div>
+            <!-- Set background for slide in css -->
+            <div class="header-back two"></div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+	
+
+    <div class="wrapper wrapper-content  animated fadeInRight article">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="pull-right">
+                    	
+                        	<button class="btn btn-white btn-xs" type="button">linux</button>
+                        
+                    </div>
+                    <div class="text-center article-title">
+                    <span class="text-muted"><i class="fa fa-clock-o"></i> 1 Mar 2013</span>
+                        <h1>
+                            Win7上安装Linux双系统
+                        </h1>
+                    </div>
+                    	<h1 id="一硬盘准备">一、硬盘准备</h1>
+
+<p>　　linux对于java程序猿来说是必备技能，为了学习linux，也不可能专门整台电脑，好多人都为了图方便，用vmware做，我感觉的确是太水了，一点没有极客的style，还是做个双系统比较帅气。</p>
+
+<p>　　首先，我们要准备一个空闲的硬盘空间，我就是用u盘启动盘里面的分区软件，把我常用来下载缓存的50G的F盘给格式化，然后删除了，这样我们就有了50G的空闲存储。不用格式化，不用再分盘符，只要让其实空闲存储空间就行，这里说的空闲存储不是说有个F盘能访问，但是里面什么文件都没有，而是你在往这个区内安装系统之前，根本就没法访问这块区域。</p>
+
+<h1 id="二镜像准备">二、镜像准备</h1>
+
+<p>　　Centos，Redhat什么的都可以，我用的是Centos7，从官网下载dvd版本，everything版本的太大，内存8G实际只能使用6G多点的U盘装不下，只能下载4G多点的dvd版本。</p>
+
+<h1 id="三upan准备">三、Upan准备</h1>
+
+<p>　　在上述第一步操作中，准备空闲区域可以用U盘启动制作程序（网上随便搜一个就行）把U盘制作成系统启动U盘，然后重启电脑，进入U盘中的PE系统，里面有个硬盘分区工具，可以帮助你将平时用不着的硬盘分区转换成空闲区域。</p>
+
+<p>　　在上述两步都做完的前提之下，用UltraISO将linux镜像写入到U盘中，在写入之前请先格式化U盘。</p>
+
+<h1 id="四安装centos7">四、安装Centos7</h1>
+<p>　　使用U盘启动盘之前呢，先进入电脑的bios模式，修改U盘启动在先；当然，你也可以直接在开机时，多次敲击Del键或者F2键，选择从U盘进入系统也行。</p>
+
+<h3 id="一装系统">（一）装系统</h3>
+
+<p>　　关机，插入U盘，然后开机，选择进入U盘系统，过会会有centos安装界面，第一步是让你选择系统语言，选择中文之后，然后这一步是很多配置项，选择安装位置 处 选择当前空闲的 50G 所在的硬盘选项。</p>
+
+<h3 id="二安装软件">（二）安装软件</h3>
+
+<p>　　然后选择安装软件，建议你选择最后一个带界面的方便开发用的选项，右边多选除了数据库其他都选上吧。</p>
+
+<h3 id="三其他设置">（三）其他设置</h3>
+
+<p>　　然后选择网络，直接找个连上就好，然后进入下一步，设置root密码，建议设个简单好记的，要不然很麻烦。然后等待安装结束，估计需要半个小时左右。安装完毕之后，重启电脑，立即拔掉U盘，然后过会就能看到期待已久的Centos图形界面，这样下来系统就安装完毕了。
+　　  	
+　　</p>
+
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                                <h5 style="display: inline;">Tags:</h5>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">linux</button>
+                                
+                                    <button class="btn btn-white btn-xs" type="button">双系统</button>
+                                
+                        </div>
+                        <div class="col-md-6">
+                            <div class="small text-right">
+                                <h5>Stats:</h5>
+                                <div>
+                                
+                                
+                                <i class="fa fa-comments-o"> </i> <span class='disqus-comment-count' data-disqus-url="http://localhost:4000/linux/2013/03/01/LinuxSetUp.html">0</span> comments
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- donate -->
+                            
+                            <br>
+                            <!-- share -->
+                            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_button_email"></a>
+<a class="a2a_button_wechat"></a>
+<a class="a2a_button_sina_weibo"></a>
+</div>
+<script>
+var a2a_config = a2a_config || {};
+a2a_config.color_main = "D7E5ED";
+a2a_config.color_border = "AECADB";
+a2a_config.color_link_text = "333333";
+a2a_config.color_link_text_hover = "333333";
+</script>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+
+                            <br>
+                            <!-- comment -->
+                            
+<div id="disqus_thread"></div>
+<script>
+/** * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS. * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+	/*
+	var disqus_config = function () { this.page.url = PAGE_URL;
+	// Replace PAGE_URL with your page's canonical URL variable this.page.identifier = PAGE_IDENTIFIER;
+	// Replace PAGE_IDENTIFIER with your page's unique identifier variable };
+	*/
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+	
+	    <!-- Google analytics -->
+
+
+<!-- GrowingIO -->
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?31d4d3da408942182f35606f94a67f3d";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+_hmt.push(['_setAutoPageview', true]);
+</script>
+
+
+	
+
+</body>
+</html>

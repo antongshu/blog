@@ -1,0 +1,38 @@
+# careers section data
+# if you don't have language feature(language.yml is empty), ignore "i18n" items
+- name:
+    detail: TTFW
+  desc:
+    detail: 接触一些新技术，对项目管理有些更新的认识
+  date:
+    detail: 2016-09-18
+  job:
+    detail: Java 主程 + 架构
+  icon: fa-plus-square
+
+- name:
+    detail: Itec
+  desc:
+    detail: 认识了一些人，交了几个朋友，学到一些东西，算没白来
+    i18n: company_a_desc
+  date:
+    detail: 2014-04-01
+    i18n: company_a_date
+  job:
+    detail: Java 项目组长
+    i18n: company_a_job
+  icon: fa-plus-square
+
+- name:
+    detail: RockMobile
+    i18n: RockMobile
+  desc:
+    detail: 一段愉悦难忘的美好时光
+    i18n: company_b_desc
+  date:
+    detail: 2011-09-01
+    i18n: company_b_date
+  job:
+    detail: Java 工程师
+    i18n: company_b_job
+  icon: fa-plus-square
